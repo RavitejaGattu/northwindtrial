@@ -1,0 +1,10 @@
+<mvc:View
+    controllerName="northwind.app.odata.northwind.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m">
+    <Shell id="View1">
+        <App id="idApp">
+        </App>
+    </Shell>
+</mvc:View>

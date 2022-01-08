@@ -1,0 +1,28 @@
+<mvc:View 
+    controllerName="northwind.app.odata.northwind.controller.Detail" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    displayBlock="true" 
+    xmlns="sap.m">
+	<Page id="detail" title="{i18n>DetailTitle}" showNavButton="true" navButtonPress="handleNavButtonPress" >
+		<ObjectHeader title="{NorthWind>ProductName}" number="{= ((${NorthWind>UnitPrice} * 100) / 100).toFixed(2) }" numberUnit="{i18n>Currency}" >
+            <statuses>
+				<ObjectStatus text="{=${NorthWind>Discontinued} ? ${i18n>Discontinued} : ${i18n>Available}}"
+                    state="{=${NorthWind>Discontinued} ? 'Error' : 'Success'}"/>
+				<ObjectStatus 
+                 text="{= (${Northwind>UnitsOnOrder} > 0) ? ${i18n>Ordered} : ${i18n>NotOrdered} }" state="Success"/>
+			</statuses> 
+			<attributes>
+				<ObjectAttribute text="Product #{Northwind>ProductID}"/>
+				<ObjectAttribute text="Category #{Northwind>CategoryID}"/>
+				<ObjectAttribute text="Supplier #{Northwind>SupplierID}"/>
+			</attributes>
+        </ObjectHeader>
+        <footer>
+			<Bar>
+				<contentRight>
+					<Button text="{i18n>OrderButtonText}" type="Accept" icon="sap-icon://accept" press="handleOrder"/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

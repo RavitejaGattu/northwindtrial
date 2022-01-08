@@ -1,0 +1,28 @@
+<mvc:View 
+    controllerName="northwind.app.odata.northwind.controller.List" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    displayBlock="true" 
+    xmlns="sap.m">
+	<Page id="listPage" title="{i18n>ListTitle}" >
+        <subHeader>
+            <Bar>
+                <contentLeft>
+                    <SearchField search="handleSearch" />
+                </contentLeft>
+            </Bar>
+        </subHeader>
+        <List id="list" items="{NorthWind>/Products}" growing="true" growingThreshold="10" >
+            <ObjectListItem type="Navigation" press="handleListItemPress" title="{NorthWind>ProductName}" 
+                number="{= ((${NorthWind>UnitPrice} * 100) / 100).toFixed(2) }"
+                numberUnit="{i18n>Currency}" >
+                <attributes>
+                    <ObjectAttribute text="{Northwind>QuantityPerUnit}"/>
+                </attributes>
+                <firstStatus>
+                    <ObjectStatus text="{=${NorthWind>Discontinued} ? ${i18n>Discontinued} : ${i18n>Available}}"  
+                        state="{=${NorthWind>Discontinued} ? 'Error' : 'Success'}"/>
+                </firstStatus>
+            </ObjectListItem>
+        </List>
+    </Page>
+</mvc:View>
